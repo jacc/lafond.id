@@ -1,16 +1,220 @@
 ---
+import { Image } from "astro:assets";
 
+const work = [
+  {
+    company: "Retro",
+    title: "Marketing Intern",
+    description: "social media, influencer outreach, ambassador program",
+    time: "2023",
+    icon: "https://media.licdn.com/dms/image/D560BAQFtXPhyqZPAgQ/company-logo_200_200/0/1689606264237?e=1712188800&v=beta&t=rhWMGhHqPio_hl1YK48bPv3xOOw21DYiegrXsohQ7MM",
+    link: "https://retro.app",
+  },
+  {
+    company: "Whop",
+    title: "DevRel",
+    description: "customer support, documentation",
+    time: "2023",
+    icon: "https://media.licdn.com/dms/image/D4E0BAQEKB6uZxDbVkw/company-logo_200_200/0/1700450242260/whop_io_logo?e=1712188800&v=beta&t=AXPSVIUWexir0EqqTImTl_DI7MWgPFPXo9o6jcQn-UA",
+    link: "https://whop.com",
+  },
+  {
+    company: "Basic.Space",
+    title: "Marketing",
+    description: "web3 expansion, Discord community management",
+    time: "2022/23",
+    icon: "https://media.licdn.com/dms/image/C560BAQGLxfCDDFEArg/company-logo_200_200/0/1674792714444/basicspace_logo?e=1712188800&v=beta&t=c0nphdxb19tgIqrOYKvp6hBGXp6RjMkrNBXxcMpvYBs",
+    link: "https://basic.space",
+  },
+  {
+    company: "OpenSea",
+    title: "Community Manager",
+    description: "Discord community management",
+    time: "2022",
+    icon: "https://media.licdn.com/dms/image/D4D0BAQGuZgZ07yZ8zw/company-logo_200_200/0/1684252110691/opensea_io_logo?e=1712188800&v=beta&t=pHaayGDMH-mKgBT8Zg53E4z5ukgdTH5Gm9jNQ_276yo",
+    link: "https://opensea.io",
+  },
+  {
+    company: "Creature World",
+    title: "Community Tech",
+    description: "community scaffolding, bot development",
+    time: "2021/22/23",
+    icon: "https://media.licdn.com/dms/image/C560BAQGxgIDOKvPozw/company-logo_200_200/0/1634344407253?e=1712188800&v=beta&t=4NLmQn5KltP3GT8wUxDiCTQ4BZ0kZCgBFZ2v4hrosnI",
+    link: "https://creature.world",
+  },
+  {
+    company: "Reincubate",
+    title: "QA/Test Engineer",
+    description: "bug triage, test automation",
+    time: "2021",
+    icon: "https://media.licdn.com/dms/image/C4D0BAQEemICSAQ7Vwg/company-logo_200_200/0/1630519546440/reincubate_logo?e=1712188800&v=beta&t=m-M4i3CY6Qj3uDY_ImgWFXqmP7jJJL9MA4bn0lHoJws",
+    link: "https://reincubate.com",
+  },
+];
+
+const projects = [
+  {
+    name: "stardew.app",
+    description: "a Stardew Valley perfection tool",
+    link: "123",
+    icon: "https://stardew.app/favicon.png",
+  },
+  {
+    name: "stardew.me",
+    description: "a Stardew Valley image generation tool",
+    link: "123",
+    icon: "https://stardew.me/assets/logo.png",
+  },
+  {
+    name: "stats360.co",
+    description: "reverse engineed Life360 dashboard",
+    link: "123",
+    icon: "https://stats360.co/_next/static/media/stats360.4b04b917.png",
+  },
+];
+
+const experiments = [
+  {
+    name: "whoopkit",
+    description: "reverse engineered Whoop API wrapper",
+    link: "123",
+  },
+  {
+    name: "streamticker",
+    description: "Discord bot providing social media account stats",
+    link: "123",
+  },
+  {
+    name: "tunes.ninja",
+    description: "Discord bot converting streaming service links",
+    link: "123",
+  },
+  {
+    name: "music-box",
+    description: "GitHub award winning Last.fm integration gist",
+    link: "123",
+  },
+];
+
+const additionals = [
+  {
+    name: "💼 linkedin",
+    link: "https://jack.link/linkedin",
+  },
+  {
+    name: "💌 email",
+    link: "mailto:jack@lafond.id",
+  },
+  {
+    name: "🧑‍💻 github",
+    link: "https://jack.link/github",
+  },
+  {
+    name: "🙃 personal",
+    link: "https://jack.bio",
+  },
+];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>jack lafond's id</title>
+  </head>
+  <div class="flex h-screen p-8">
+    <div class="m-auto">
+      <div class="flex space-x-10 justify-between">
+        <p class="font-bold text-2xl font-mono">jack lafond</p>
+      </div>
+      <div>
+        <p class="font-mono">
+          twenty-one year old cybersecurity & computer science student in tampa,
+          fl
+        </p>
+      </div>
+      <div class="mt-8">
+        <p class="font-bold text-xl">experience</p>
+        <div class="mt-4 space-y-3 md:space-y-1">
+          {
+            work.map((project) => (
+              <a class="grid md:flex md:justify-between" href={project.link}>
+                <div class="flex space-x-2">
+                  <Image
+                    src={project.icon}
+                    alt="A bird."
+                    width="24"
+                    height="24"
+                    class="rounded-md"
+                  />
+                  <p class="font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                    {project.company} ({project.time})
+                  </p>
+                </div>
+                <p class="font-mono">{project.description}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div class="mt-8">
+        <p class="font-bold text-xl">projects</p>
+        <div class="mt-4 space-y-3 md:space-y-1">
+          {
+            projects.map((project) => (
+              <a class="grid md:flex md:justify-between" href={project.link}>
+                <div class="flex space-x-2">
+                  <Image
+                    src={project.icon}
+                    alt="A bird."
+                    width="24"
+                    height="24"
+                    class="rounded-md"
+                  />
+                  <p class="font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                    {project.name}
+                  </p>
+                </div>
+                <p class="font-mono">{project.description}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div class="mt-8">
+        <p class="font-bold text-xl">experiments</p>
+        <div class="mt-4 space-y-3 md:space-y-1">
+          {
+            experiments.map((project) => (
+              <div class="grid md:flex md:justify-between">
+                <p class="font-bold">{project.name}</p>
+                <p class="font-mono">{project.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="mt-8">
+        <hr class="my-4 border-gray-300" />
+        <div class="mt-4">
+          <div class="grid md:flex md:justify-between">
+            {
+              additionals.map((project) => (
+                <a
+                  href={project.link}
+                  class="hover:underline hover:cursor-pointer"
+                >
+                  <p class="font-bold font-mono">{project.name}</p>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </html>
