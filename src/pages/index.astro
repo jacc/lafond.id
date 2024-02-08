@@ -139,8 +139,8 @@ const additionals = [
       </div>
       <div>
         <p class="font-mono">
-          twenty-one year old cybersecurity & computer science student in tampa,
-          fl
+          twenty-one year old security operations intern & cybersec/compsci
+          student in tampa, fl
         </p>
       </div>
       <div class="mt-8">
@@ -196,10 +196,14 @@ const additionals = [
         <div class="mt-4 space-y-3 md:space-y-1">
           {
             experiments.map((project) => (
-              <div class="grid md:flex md:justify-between">
-                <p class="font-bold">{project.name}</p>
+              <a class="grid md:flex md:justify-between" href={project.link}>
+                <div class="flex space-x-2">
+                  <p class="font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                    {project.name}
+                  </p>
+                </div>
                 <p class="font-mono">{project.description}</p>
-              </div>
+              </a>
             ))
           }
         </div>
