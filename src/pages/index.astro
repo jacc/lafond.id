@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import "../styles/app.css";
 
 const work = [
   {
@@ -130,6 +131,13 @@ const additionals = [
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>jack lafond's id</title>
+    <link
+      rel="preload"
+      href="/fonts/BerkeleyMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
   <div class="flex h-screen p-8">
     <div class="m-auto">
@@ -143,7 +151,7 @@ const additionals = [
         </p>
       </div>
       <div class="mt-8">
-        <p class="font-bold text-xl">experience</p>
+        <p class="font-bold font-mono text-xl">experience</p>
         <div class="mt-4 space-y-3 md:space-y-1">
           {
             work.map((project) => (
@@ -156,7 +164,7 @@ const additionals = [
                     height="24"
                     class="rounded-md"
                   />
-                  <p class="font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
                     {project.company} ({project.time})
                   </p>
                 </div>
@@ -167,7 +175,7 @@ const additionals = [
         </div>
       </div>
       <div class="mt-8">
-        <p class="font-bold text-xl">projects</p>
+        <p class="font-bold font-mono text-xl">projects</p>
         <div class="mt-4 space-y-3 md:space-y-1">
           {
             projects.map((project) => (
@@ -180,7 +188,7 @@ const additionals = [
                     height="24"
                     class="rounded-md"
                   />
-                  <p class="font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
                     {project.name}
                   </p>
                 </div>
@@ -191,13 +199,13 @@ const additionals = [
         </div>
       </div>
       <div class="mt-8">
-        <p class="font-bold text-xl">experiments</p>
+        <p class="font-bold font-mono text-xl">experiments</p>
         <div class="mt-4 space-y-3 md:space-y-1">
           {
             experiments.map((project) => (
               <a class="grid md:flex md:justify-between" href={project.link}>
                 <div class="flex space-x-2">
-                  <p class="font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
                     {project.name}
                   </p>
                 </div>
