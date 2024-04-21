@@ -1,0 +1,28 @@
+---
+import { db, Views as DBViews, sql } from "astro:db";
+const { slug } = Astro.props;
+let item;
+try {
+  item = await db
+    .insert(DBViews)
+    .values({
+      slug,
+      count: 1,
+    })
+    .onConflictDoUpdate({
+      target: DBViews.slug,
+      set: {
+        count: sql`count + 1`,
+      },
+    })
+    .returning({
+      slug: DBViews.slug,
+      count: DBViews.count,
+    });
+} catch (error) {
+  console.error(error);
+  item = [{ slug, count: 1 }];
+}
+---
+
+<span class="text-black/50">{item[0].count} views</span>

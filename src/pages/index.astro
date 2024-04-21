@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { ViewTransitions } from "astro:transitions";
 import "../styles/app.css";
 
 const work = [
@@ -138,6 +139,7 @@ const additionals = [
       type="font/woff2"
       crossorigin
     />
+    <ViewTransitions />
   </head>
   <div class="flex h-screen p-8">
     <div class="m-auto">
@@ -234,6 +236,4 @@ const additionals = [
       </div>
     </div>
   </div>
-
-
 </html>
