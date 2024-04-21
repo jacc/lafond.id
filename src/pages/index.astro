@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import { ViewTransitions } from "astro:transitions";
 import "../styles/app.css";
 
@@ -123,6 +124,13 @@ const additionals = [
   // link: "https://jack.bio",
   // },
 ];
+
+const blog = await getCollection("blog");
+
+const posts = blog.map((post) => ({
+  params: { slug: post.slug, title: post.title },
+  props: post,
+}));
 ---
 
 <html lang="en">
@@ -212,6 +220,35 @@ const additionals = [
                   </p>
                 </div>
                 <p class="font-mono">{project.description}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div class="mt-8">
+        <p class="font-bold font-mono text-xl">posts</p>
+        <div class="mt-4 space-y-3 md:space-y-1">
+          {
+            posts.map((post) => (
+              <a
+                class="grid md:flex md:justify-between"
+                href={`/blog/${post.props.slug}`}
+              >
+                <div class="flex space-x-2">
+                  <Image
+                    src={post.props.data.homeIcon}
+                    alt="A bird."
+                    width="24"
+                    height="24"
+                    class="rounded-md"
+                  />
+                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                    {post.props.data.title}
+                  </p>
+                </div>
+                <p class="font-mono text-black">
+                  {post.props.data.description}
+                </p>
               </a>
             ))
           }
