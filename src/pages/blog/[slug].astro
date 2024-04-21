@@ -29,6 +29,8 @@ const { Content } = await post.render();
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Jack LaFond</title>
+    <meta property="og:image" content=`https://lafond.id/${heroImage}` />
+    <meta property="og:description" content={description} />
     <link
       rel="preload"
       href="/fonts/BerkeleyMono-Regular.woff2"
