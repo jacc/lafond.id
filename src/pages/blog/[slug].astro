@@ -34,6 +34,19 @@ const { Content } = await post.render();
     <meta property="description" content={description} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={`https://lafond.id/blog/${post.slug}`} />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:published_time" content={pubDate} />
+    <meta property="article:modified_time" content={updatedDate} />
+    <meta property="article:author" content="Jack LaFond" />
+    <meta property="og:site_name" content="Jack LaFond" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@1afond" />
+    <meta name="twitter:creator" content="@1afond" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`https://lafond.id${heroImage}`} />
+
     <link
       rel="preload"
       href="/fonts/BerkeleyMono-Regular.woff2"
