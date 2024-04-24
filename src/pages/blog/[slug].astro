@@ -77,6 +77,7 @@ const { Content } = await post.render();
             <p class="text-black/70">
               {description} ⊙ <Date date={pubDate} /> ⊙ <Views
                 slug={post.slug}
+                client:only
               />
             </p>
             {
