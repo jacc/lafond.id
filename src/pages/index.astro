@@ -6,10 +6,18 @@ import "../styles/app.css";
 
 const work = [
   {
+    company: "Apple",
+    title: "",
+    description: "technical specialist",
+    time: "present",
+    icon: "/apple.png",
+    link: "https://apple.com",
+  },
+  {
     company: "ReliaQuest",
     title: "Sec Ops Intern",
     description: "security operations, digital asset protection",
-    time: "present",
+    time: "2023/24",
     icon: "/reliaquest_logo.jpeg",
     link: "https://reliaquest.com",
   },
@@ -109,20 +117,20 @@ const experiments = [
 const additionals = [
   {
     name: "💼 linkedin",
-    link: "https://jack.link/linkedin",
+    link: "https://linkedin.com/in/jacklafond",
   },
   {
     name: "💌 email",
     link: "mailto:jack@lafond.id",
   },
   {
-    name: "🧑‍💻 github",
-    link: "https://jack.link/github",
+    name: "👋 personal",
+    link: "https://jack.bio",
   },
-  // {
-  // name: "🙃 personal",
-  // link: "https://jack.bio",
-  // },
+  {
+    name: "🧑‍💻 github",
+    link: "https://github.com/jacc",
+  },
 ];
 
 const blog = await getCollection("blog");
@@ -149,15 +157,14 @@ const posts = blog.map((post) => ({
     />
     <ViewTransitions />
   </head>
-  <div class="flex h-screen p-8">
-    <div class="m-auto">
+  <div class="flex h-screen p-8 max-w-4xl m-auto">
+    <div class="my-auto w-full">
       <div class="flex space-x-10 justify-between">
         <p class="font-bold text-2xl font-mono">jack lafond</p>
       </div>
       <div>
         <p class="font-mono">
-          twenty-one year old security operations intern & cybersec/compsci
-          student in tampa, fl
+          twenty-one year old cybersec/compsci student in tampa, fl
         </p>
       </div>
       <div class="mt-8">
@@ -234,19 +241,21 @@ const posts = blog.map((post) => ({
                 class="grid md:flex md:justify-between"
                 href={`/blog/${post.props.slug}`}
               >
-                <div class="flex space-x-2">
-                  <Image
-                    src={post.props.data.homeIcon}
-                    alt="A bird."
-                    width="24"
-                    height="24"
-                    class="rounded-md"
-                  />
-                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
-                    {post.props.data.title}
-                  </p>
+                <div class="flex items-center">
+                  <div class="flex space-x-2">
+                    <Image
+                      src={post.props.data.homeIcon}
+                      alt="A bird."
+                      width="24"
+                      height="24"
+                      class="rounded-md"
+                    />
+                    <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                      {post.props.data.title}
+                    </p>
+                  </div>
                 </div>
-                <p class="font-mono text-black">
+                <p class="font-mono text-black truncate">
                   {post.props.data.description}
                 </p>
               </a>
