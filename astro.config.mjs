@@ -14,8 +14,4 @@ export default defineConfig({
   ],
   output: "static",
   adapter: vercel({ webAnalytics: true }),
-  redirects: {
-    "/blog/shellhacks":
-      "https://www.linkedin.com/posts/jacklafond_shellhacks-hackathon-cybersecurity-activity-7246530359977197568-ezD8",
-  },
 });

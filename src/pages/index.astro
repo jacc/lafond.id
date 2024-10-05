@@ -147,7 +147,7 @@ const additionals = [
 const blog = await getCollection("blog");
 
 const posts = blog.map((post) => ({
-  params: { slug: post.slug, title: post.data.title },
+  params: { slug: post.slug, title: post.data.title, link: post.data.link },
   props: post,
 }));
 ---
@@ -257,7 +257,11 @@ const posts = blog.map((post) => ({
             posts.map((post) => (
               <a
                 class="grid md:flex md:justify-between"
-                href={`/blog/${post.props.slug}`}
+                href={
+                  !post.props.data.link
+                    ? `/blog/${post.props.slug}`
+                    : post.props.data.link
+                }
               >
                 <div class="flex items-center">
                   <div class="flex space-x-2">
