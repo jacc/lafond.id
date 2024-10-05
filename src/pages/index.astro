@@ -146,10 +146,15 @@ const additionals = [
 
 const blog = await getCollection("blog");
 
-const posts = blog.map((post) => ({
-  params: { slug: post.slug, title: post.data.title, link: post.data.link },
-  props: post,
-}));
+const posts = blog
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+  )
+  .map((post) => ({
+    params: { slug: post.slug, title: post.data.title, link: post.data.link },
+    props: post,
+  }));
 ---
 
 <html lang="en">
