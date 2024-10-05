@@ -16,7 +16,7 @@ const work = [
   {
     company: "ReliaQuest",
     title: "Sec Ops Intern",
-    description: "security operations, digital asset protection",
+    description: "incident response, digital asset protection",
     time: "2023/24",
     icon: "/reliaquest_logo.jpeg",
     link: "https://reliaquest.com",
@@ -84,13 +84,24 @@ const projects = [
     link: "https://stardew.me",
     icon: "https://stardew.me/assets/logo.png",
   },
+  {
+    name: "Waffle House Index",
+    description: "tracking closed Waffle Houses' around the country",
+    link: "https://wafflehouseindex.org",
+    icon: "https://symbl-world.akamaized.net/i/webp/d4/4e02e79c4ad165cd067f3bf4328c81.webp",
+  },
 ];
 
 const experiments = [
   {
+    name: "recipebot",
+    description: "scrape and synthesize social media recipe posts using AI",
+    link: "https://recipebot.trinket.engineering",
+  },
+  {
     name: "stats360.co",
     description: "(now broken) reverse engineered Life360 dashboard",
-    link: "https://stats360.co",
+    link: "",
   },
   {
     name: "whoopkit",
@@ -136,7 +147,7 @@ const additionals = [
 const blog = await getCollection("blog");
 
 const posts = blog.map((post) => ({
-  params: { slug: post.slug, title: post.title },
+  params: { slug: post.slug, title: post.data.title },
   props: post,
 }));
 ---
@@ -147,7 +158,7 @@ const posts = blog.map((post) => ({
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>jack lafond's id</title>
+    <title>jack lafond</title>
     <link
       rel="preload"
       href="/fonts/BerkeleyMono-Regular.woff2"
@@ -156,15 +167,22 @@ const posts = blog.map((post) => ({
       crossorigin
     />
     <ViewTransitions />
+    <script
+      defer
+      data-domain="lafond.id"
+      src="https://plausible.verbose.faith/js/script.js"></script>
   </head>
-  <div class="flex h-screen p-8 max-w-4xl m-auto">
+  <div class="flex h-screen p-8 max-w-4xl m-auto" transition:animate="fade">
     <div class="my-auto w-full">
-      <div class="flex space-x-10 justify-between">
+      <div class="flex space-x-12 font-mono">
         <p class="font-bold text-2xl font-mono">jack lafond</p>
       </div>
       <div>
         <p class="font-mono">
-          twenty-one year old cybersec/compsci student in tampa, fl
+          cybersec/compsci student & self-taught software engineer living in
+          tampa, fl. <br /><br />passions include finding what makes computers
+          tick, building tools to make life easier, and helping others do the
+          same.
         </p>
       </div>
       <div class="mt-8">
@@ -244,8 +262,8 @@ const posts = blog.map((post) => ({
                 <div class="flex items-center">
                   <div class="flex space-x-2">
                     <Image
-                      src={post.props.data.homeIcon}
-                      alt="A bird."
+                      src={post.props.data.homeIcon || "/default-icon.png"}
+                      alt="icon to blog post"
                       width="24"
                       height="24"
                       class="rounded-md"
