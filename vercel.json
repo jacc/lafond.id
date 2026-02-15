@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/blog/tracelabs", "destination": "https://jack.bio/blog/tracelabs", "permanent": true },
+    { "source": "/blog/shellhacks", "destination": "https://jack.bio/blog/shellhacks", "permanent": true },
+    { "source": "/blog/spartanctf", "destination": "https://jack.bio/blog/spartanctf", "permanent": true },
+    { "source": "/blog/github", "destination": "https://jack.bio/blog/github", "permanent": true },
+    { "source": "/blog/:slug*", "destination": "https://jack.bio/blog/:slug*", "permanent": true }
+  ]
+}

@@ -1,21 +1,44 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import { ViewTransitions } from "astro:transitions";
 import "../styles/app.css";
 
 const work = [
   {
+    company: "Citi",
+    title: "",
+    description: "intelligence & research",
+    time: "2026",
+    icon: "/citi_logo.jpeg",
+    link: "https://citi.com",
+  },
+  {
+    company: "c/side",
+    title: "",
+    description: "cybersecurity research & writing",
+    time: "2025",
+    icon: "/cside_logo.jpeg",
+    link: "https://cside.dev",
+  },
+  {
+    company: "Bureau Veritas Cybersecurity",
+    title: "",
+    description: "web application penetration testing",
+    time: "2025",
+    icon: "/bv_logo.jpeg",
+    link: "https://www.bureauveritas.com",
+  },
+  {
     company: "Apple",
     title: "",
     description: "technical specialist",
-    time: "present",
+    time: "2024/25",
     icon: "/apple.png",
     link: "https://apple.com",
   },
   {
     company: "ReliaQuest",
-    title: "Sec Ops Intern",
+    title: "",
     description: "incident response, digital asset protection",
     time: "2023/24",
     icon: "/reliaquest_logo.jpeg",
@@ -23,39 +46,23 @@ const work = [
   },
   {
     company: "Retro",
-    title: "Marketing Intern",
+    title: "",
     description: "social media, influencer outreach, ambassador program",
     time: "2023",
     icon: "/retro_logo.jpeg",
     link: "https://retro.app",
   },
   {
-    company: "Whop",
-    title: "DevRel",
-    description: "customer support, documentation",
-    time: "2023",
-    icon: "/whop_io_logo.jpeg",
-    link: "https://whop.com",
-  },
-  {
     company: "Basic.Space",
-    title: "Marketing",
+    title: "",
     description: "web3 expansion, Discord community management",
     time: "2022/23",
     icon: "/basicspace_logo.jpeg",
     link: "https://basic.space",
   },
   {
-    company: "OpenSea",
-    title: "Community Manager",
-    description: "Discord community management",
-    time: "2022",
-    icon: "/opensea_io_logo.jpeg",
-    link: "https://opensea.io",
-  },
-  {
     company: "Creature World",
-    title: "Community Tech",
+    title: "",
     description: "community scaffolding, bot development",
     time: "2021/22/23",
     icon: "/creature_world_logo.jpeg",
@@ -63,7 +70,7 @@ const work = [
   },
   {
     company: "Reincubate",
-    title: "QA/Test Engineer",
+    title: "",
     description: "bug triage, test automation",
     time: "2021",
     icon: "/reincubate_logo.jpeg",
@@ -71,47 +78,41 @@ const work = [
   },
 ];
 
-const projects = [
+const projects: { name: string; description: string; link: string; icon?: string }[] = [
   {
     name: "stardew.app",
     description: "a Stardew Valley perfection tool",
     link: "https://stardew.app",
-    icon: "https://stardew.app/favicon.png",
   },
   {
     name: "stardew.me",
     description: "a Stardew Valley image generation tool",
     link: "https://stardew.me",
-    icon: "https://stardew.me/assets/logo.png",
-  }
-];
-
-const experiments = [
-  {
-    name: "RecipeBot",
-    description: "scrape and synthesize social media recipe posts using AI",
-    link: "https://recipebot.trinket.engineering",
   },
-    {
+  {
+    name: "parking.exposed",
+    description: "scraped 100k+ parking tickets via API vulnerability",
+    link: "https://www.jack.bio/blog/parkingtickets",
+  },
+  {
+    name: "HLTV Calendar",
+    description: "native Counter-Strike events calendar",
+    link: "https://www.jack.bio/blog/hltv",
+  },
+  {
+    name: "License Plate Bot",
+    description: "acquired an ultra-rare license plate using TypeScript",
+    link: "https://www.jack.bio/blog/licenseplate",
+  },
+  {
     name: "Waffle House Index",
-    description: "how I tracked closed Waffle Houses during hurricane season",
+    description: "tracked closed Waffle Houses during hurricane season",
     link: "https://www.youtube.com/watch?v=TBrR3AEutsI",
-    icon: "https://symbl-world.akamaized.net/i/webp/d4/4e02e79c4ad165cd067f3bf4328c81.webp",
   },
   {
     name: "stats360.co",
-    description: "(now broken) reverse engineered Life360 dashboard",
-    link: "",
-  },
-  {
-    name: "StreamTicker",
-    description: "Discord bot providing social media account stats",
-    link: "https://github.com/streamticker/streamticker",
-  },
-  {
-    name: "tunes.ninja",
-    description: "Discord bot converting streaming service links",
-    link: "https://github.com/jacc/tunes.ninja",
+    description: "reverse engineered Life360 dashboard",
+    link: "https://www.jack.bio/blog/life360",
   },
   {
     name: "music-box",
@@ -122,34 +123,23 @@ const experiments = [
 
 const additionals = [
   {
-    name: "💼 LinkedIn",
+    name: "LinkedIn",
     link: "https://linkedin.com/in/jacklafond",
   },
   {
-    name: "💌 Email",
-    link: "mailto:jack@lafond.id",
+    name: "Email",
+    link: "#",
+    email: true,
   },
   {
-    name: "👋 Personal",
+    name: "Personal",
     link: "https://jack.bio",
   },
   {
-    name: "🧑‍💻 GitHub",
+    name: "GitHub",
     link: "https://github.com/jacc",
   },
 ];
-
-const blog = await getCollection("blog");
-
-const posts = blog
-  .sort(
-    (a, b) =>
-      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
-  )
-  .map((post) => ({
-    params: { slug: post.slug, title: post.data.title, link: post.data.link },
-    props: post,
-  }));
 ---
 
 <html lang="en">
@@ -179,126 +169,125 @@ const posts = blog
       </div>
       <div>
         <p class="font-mono">
-          MBA candidate, cybersecurity professional, and self-taught software engineer living in
-          Tampa, FL. <br /><br />Passionate about learning what makes computers
-          tick, building tools to make life easier, and helping others along the way.
+          Cybersecurity professional & software engineer.
+        </p>
+        <p class="font-mono text-black/60 text-sm mt-1">
+          OSINT, penetration testing, automation, and breaking things to understand how they work.
         </p>
       </div>
-      <div class="mt-8">
-        <p class="font-bold font-mono text-xl">Experience</p>
-        <div class="mt-4 space-y-3 md:space-y-1">
+      <div class="mt-4">
+        <p class="font-bold font-mono text-lg">Experience</p>
+        <div class="mt-2">
           {
-            work.map((project) => (
-              <a class="grid md:flex md:justify-between" href={project.link}>
-                <div class="flex space-x-2">
+            work.map((project, i) => (
+              <div class="flex gap-2">
+                <div class="flex flex-col items-center shrink-0">
                   <Image
                     src={project.icon}
-                    alt="Project icon."
+                    alt={`${project.company} logo`}
                     width="24"
                     height="24"
-                    class="rounded-md"
+                    class="w-6 h-6 shrink-0"
+                    loading="eager"
                   />
-                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
-                    {project.company} ({project.time})
-                  </p>
+                  {i < work.length - 1 && (
+                    <span class="font-mono text-black/40 select-none leading-tight">|</span>
+                  )}
                 </div>
-                <p class="font-mono">{project.description}</p>
-              </a>
+                <a class="grid md:flex md:justify-between w-full" href={project.link}>
+                  <p class="font-mono whitespace-nowrap hover:underline hover:cursor-pointer">
+                    <span class="font-bold">{project.company}</span> <span class="text-black/40">({project.time})</span>
+                  </p>
+                  <p class="font-mono">{project.description}</p>
+                </a>
+              </div>
             ))
           }
         </div>
       </div>
-      <div class="mt-8">
-        <p class="font-bold font-mono text-xl">Projects</p>
-        <div class="mt-4 space-y-3 md:space-y-1">
+      <div class="mt-4">
+        <p class="font-bold font-mono text-lg">Education</p>
+        <div class="mt-2">
+          <div class="flex gap-2">
+            <div class="flex flex-col items-center shrink-0">
+              <Image
+                src="/ut_logo.jpeg"
+                alt="University of Tampa logo"
+                width="24"
+                height="24"
+                class="w-6 h-6 shrink-0"
+              />
+              <span class="font-mono text-black/40 select-none leading-tight">|</span>
+            </div>
+            <div class="grid md:flex md:justify-between w-full">
+              <p class="font-mono whitespace-nowrap">
+                <span class="font-bold">University of Tampa</span> <span class="text-black/40">(2025/26)</span>
+              </p>
+              <p class="font-mono">MBA, Cybersecurity</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <div class="flex flex-col items-center shrink-0">
+              <Image
+                src="/ut_logo.jpeg"
+                alt="University of Tampa logo"
+                width="24"
+                height="24"
+                class="w-6 h-6 shrink-0"
+              />
+            </div>
+            <div class="grid md:flex md:justify-between w-full">
+              <p class="font-mono whitespace-nowrap">
+                <span class="font-bold">University of Tampa</span> <span class="text-black/40">(2021/25)</span>
+              </p>
+              <p class="font-mono">BS Cybersecurity, minor in CS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="font-bold font-mono text-lg">Projects</p>
+        <div class="mt-2 space-y-1">
           {
             projects.map((project) => (
               <a class="grid md:flex md:justify-between" href={project.link}>
                 <div class="flex space-x-2">
-                  <Image
-                    src={project.icon}
-                    alt="Project icon."
-                    width="24"
-                    height="24"
-                    class="rounded-md"
-                  />
-                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
-                    {project.name}
-                  </p>
-                </div>
-                <p class="font-mono">{project.description}</p>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-      <div class="mt-8">
-        <p class="font-bold font-mono text-xl">Experiments</p>
-        <div class="mt-4 space-y-3 md:space-y-1">
-          {
-            experiments.map((project) => (
-              <a class="grid md:flex md:justify-between" href={project.link}>
-                <div class="flex space-x-2">
-                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
-                    {project.name}
-                  </p>
-                </div>
-                <p class="font-mono">{project.description}</p>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-      <div class="mt-8">
-        <p class="font-bold font-mono text-xl">Posts</p>
-        <div class="mt-4 space-y-3 md:space-y-1">
-          {
-            posts.map((post) => (
-              <a
-                class="grid md:flex md:justify-between"
-                href={
-                  !post.props.data.link
-                    ? `/blog/${post.props.slug}`
-                    : post.props.data.link
-                }
-              >
-                <div class="flex items-center">
-                  <div class="flex space-x-2">
+                  {project.icon && (
                     <Image
-                      src={post.props.data.homeIcon || "/default-icon.png"}
-                      alt="icon to blog post"
+                      src={project.icon}
+                      alt="Project icon."
                       width="24"
                       height="24"
                       class="rounded-md"
                     />
-                    <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
-                      {post.props.data.title}
-                    </p>
-                  </div>
+                  )}
+                  <p class="font-mono font-bold whitespace-nowrap hover:underline hover:cursor-pointer">
+                    {project.name}
+                  </p>
                 </div>
-                <p class="font-mono text-black truncate">
-                  {post.props.data.description}
-                </p>
+                <p class="font-mono">{project.description}</p>
               </a>
             ))
           }
         </div>
       </div>
-      <div class="mt-8">
-        <hr class="my-4 border-gray-300" />
-        <div class="mt-4">
-          <div class="grid md:flex md:justify-between">
-            {
-              additionals.map((project) => (
+      <div class="mt-4 font-mono text-sm text-black/50">
+        <p class="select-none">---</p>
+        <div class="mt-2 flex flex-wrap gap-x-2">
+          {
+            additionals.map((project, i) => (
+              <>
                 <a
                   href={project.link}
-                  class="hover:underline hover:cursor-pointer"
+                  class="hover:text-black transition-colors"
+                  {...(project.email ? { "data-email": true, onclick: `event.preventDefault();window.location.href='mai'+'lto:'+'jack'+'@'+'jacklafond'+'.com'` } : {})}
                 >
-                  <p class="font-bold font-mono">{project.name}</p>
+                  [{project.name.toLowerCase()}]
                 </a>
-              ))
-            }
-          </div>
+                {i < additionals.length - 1 && <span class="select-none">/</span>}
+              </>
+            ))
+          }
         </div>
       </div>
     </div>
